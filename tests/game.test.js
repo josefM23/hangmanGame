@@ -24,8 +24,17 @@ describe("Game", () => {
 describe("Game", () => {
     test("should ignore duplicate guesses", () => {
       const game = new Game("hangman")
-      game.isCorrectGuess("h"); // Första gissningen
-      game.isCorrectGuess("h"); // Dubblett
-      expect(game.guessedLetters).toEqual(["h"]) // Endast en "h" i listan
+      game.isCorrectGuess("h"); // Första gissningen.
+      game.isCorrectGuess("h"); // Dubblett.
+      expect(game.guessedLetters).toEqual(["h"]) // Endast en "h" i listan.
     })
   })
+  // Testing av felaktiga gissningar.
+describe("Game", () => {
+    test("should track wrong guesses separately", () => {
+        const game = new Game("hangman")
+        game.isCorrectGuess("x") // Felaktig gissning.
+        game.isCorrectGuess("y") // Felaktig gissning.
+        expect(game.wrongGuesses).toEqual(["x", "y"]) // Felaktiga bokstäver i lista.
+    })
+})
