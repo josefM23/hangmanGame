@@ -21,6 +21,7 @@ export class Game {
      * @returns {boolean} - True if the letter is in the word, false otherwise.
      */
     isCorrectGuess(letter) {
+        
       return this.word.includes(letter.toLowerCase())
     }
   }

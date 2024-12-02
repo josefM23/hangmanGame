@@ -20,3 +20,12 @@ describe("Game", () => {
         expect(game.isCorrectGuess("x")).toBe(false);
       })
 })
+// Testing av dublla bokstaver.(ignorera andra försåkt)
+describe("Game", () => {
+    test("should ignore duplicate guesses", () => {
+      const game = new Game("hangman")
+      game.isCorrectGuess("h"); // Första gissningen
+      game.isCorrectGuess("h"); // Dubblett
+      expect(game.guessedLetters).toEqual(["h"]) // Endast en "h" i listan
+    })
+  })
