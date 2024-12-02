@@ -9,4 +9,9 @@
 import { Game } from '../src/js/model/game.js'
 
 // Testing av rätta svaret.
-describe()
+describe("Game", () => {
+    test("should return true for a correct guess", () => {
+        const game = new Game("hangman")
+        expect(game.isCorrectGuess("h")).toBe(true)
+    })
+})
