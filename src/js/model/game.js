@@ -7,22 +7,29 @@
  */
 
 export class Game {
-    /**
-     * Creates an instance of the game with the given words.
-     * @param {string} word - The word to guess in the game.
-     */
     constructor(word) {
-      this.word = word.toLowerCase() // ordet att gissa.
+      this.word = word.toLowerCase() // detta blir spel fpr min 5 åring dotter...
+      this.guessedLetters = [] // Håller reda på gissade bokstäver..
     }
   
     /**
      * Checks if a guessed letter is part of the word.
+     * Ignores duplicate guesses.
+     *
      * @param {string} letter - The letter to check.
      * @returns {boolean} - True if the letter is in the word, false otherwise.
      */
     isCorrectGuess(letter) {
-        
-      return this.word.includes(letter.toLowerCase())
+      letter = letter.toLowerCase()
+  
+      // Ignorera om bokstaven redan har gissats..
+      if (this.guessedLetters.includes(letter)) {
+        return this.word.includes(letter)
+      }
+  
+      // Lägg till bokstaven i listan..
+      this.guessedLetters.push(letter)
+      return this.word.includes(letter)
     }
   }
   
