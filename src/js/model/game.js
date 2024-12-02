@@ -8,7 +8,7 @@
 
 export class Game {
     /**
-     * Creates an instance of the game with the given word.
+     * Creates an instance of the game with the given words.
      * @param {string} word - The word to guess in the game.
      */
     constructor(word) {

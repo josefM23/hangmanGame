@@ -14,4 +14,9 @@ describe("Game", () => {
         const game = new Game("hangman")
         expect(game.isCorrectGuess("h")).toBe(true)
     })
+    // Testing av fell svaret.
+    test("should return false for an incorrect guess", () => {
+        const game = new Game("hangman");
+        expect(game.isCorrectGuess("x")).toBe(false);
+      })
 })
