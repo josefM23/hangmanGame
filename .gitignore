@@ -24,6 +24,6 @@ dist-ssr
 *.sw?
 
 # Privat just to write todo:
-DeveloperTesting.md 
+DeveloperTesting.md
 TestingMuntlig.md
-TDD.md
+

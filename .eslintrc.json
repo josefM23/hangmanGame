@@ -1,3 +1,10 @@
 {
-    "extends": "@lnu"
-}
+    "extends": "@lnu",
+    "env": {
+      "browser": true,
+      "node": true,
+      "jest": true
+    },
+    "ignorePatterns": ["tests/**/*.js"]
+  }
+  

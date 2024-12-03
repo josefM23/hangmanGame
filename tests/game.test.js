@@ -8,33 +8,38 @@
 
 import { Game } from '../src/js/model/game.js'
 
-// Testing av rätta svaret.
-describe("Game", () => {
-    test("should return true for a correct guess", () => {
-        const game = new Game("hangman")
-        expect(game.isCorrectGuess("h")).toBe(true)
+describe('Game', () => {
+  let game
+
+  beforeEach(() => {
+    game = new Game('hangman')
+  })
+
+  describe('Correct and incorrect guesses', () => {
+    // Testing av rätta svaret.
+    test('should return true for a correct guess', () => {
+      expect(game.isCorrectGuess('h')).toBe(true)
     })
+
     // Testing av fell svaret.
-    test("should return false for an incorrect guess", () => {
-        const game = new Game("hangman");
-        expect(game.isCorrectGuess("x")).toBe(false);
-      })
-})
-// Testing av dublla bokstaver.(ignorera andra försåkt)
-describe("Game", () => {
-    test("should ignore duplicate guesses", () => {
-      const game = new Game("hangman")
-      game.isCorrectGuess("h"); // Första gissningen.
-      game.isCorrectGuess("h"); // Dubblett.
-      expect(game.guessedLetters).toEqual(["h"]) // Endast en "h" i listan.
+    test('should return false for an incorrect guess', () => {
+      expect(game.isCorrectGuess('x')).toBe(false)
     })
   })
-  // Testing av felaktiga gissningar.
-describe("Game", () => {
-    test("should track wrong guesses separately", () => {
-        const game = new Game("hangman")
-        game.isCorrectGuess("x") // Felaktig gissning.
-        game.isCorrectGuess("y") // Felaktig gissning.
-        expect(game.wrongGuesses).toEqual(["x", "y"]) // Felaktiga bokstäver i lista.
+
+    // Testing av dublla bokstaver.(ignorera andra försåkt)
+  describe('Tracking guesses', () => {
+    test('should ignore duplicate guesses', () => {
+      game.isCorrectGuess('h') // First guess.
+      game.isCorrectGuess('h') // Duplicate guess.
+      expect(game.guessedLetters).toEqual(['h']) // Only one 'h' in the list.
     })
+
+    // Testing av felaktiga gissningar.
+    test('should track wrong guesses separately', () => {
+      game.isCorrectGuess('x') // Incorrect guess.
+      game.isCorrectGuess('y') // Another incorrect guess.
+      expect(game.wrongGuesses).toEqual(['x', 'y']) // Both incorrect guesses in the list.
+    })
+  })
 })
