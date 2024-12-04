@@ -93,4 +93,34 @@ describe('Game', () => {
       expect(game.isWin()).toBe(true)
     })
   })
+
+  describe('isGameOver method', () => {
+    test('should return true when the player has won', () => {
+      game.isCorrectGuess('h')
+      game.isCorrectGuess('a')
+      game.isCorrectGuess('n')
+      game.isCorrectGuess('g')
+      game.isCorrectGuess('m')
+
+      expect(game.isGameOver()).toBe(true) // Game over because the player won.(great play...)
+    })
+
+    test('should return true when the player has lost', () => {
+      game.isCorrectGuess('x')
+      game.isCorrectGuess('y')
+      game.isCorrectGuess('z')
+      game.isCorrectGuess('q')
+      game.isCorrectGuess('w')
+      game.isCorrectGuess('e') // Exceeding max wrong guesses (assuming 5 max it will be more... we will see..).
+
+      expect(game.isGameOver()).toBe(true) // Game over because the player lost.
+    })
+
+    test('should return false when the game is still ongoing', () => {
+      game.isCorrectGuess('h')
+      game.isCorrectGuess('x') // One wrong guess, game should still continue.
+
+      expect(game.isGameOver()).toBe(false) // Game is not over yet.
+    })
+  })
 })
