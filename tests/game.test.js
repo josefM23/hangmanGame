@@ -15,7 +15,30 @@ describe('Game', () => {
     game = new Game('hangman')
   })
   
-  
+  describe('Input validation', () => {
+    test('should accept valid letters (a-z)', () => {
+      expect(game.isCorrectGuess('a')).toBe(true)
+      expect(game.isCorrectGuess('H')).toBe(true) // Should handle case insensitivity.
+    })
+
+    test('should ignore invalid input (numbers, symbols, empty string)', () => {
+      expect(game.isCorrectGuess('1')).toBe(false)
+      expect(game.isCorrectGuess('@')).toBe(false)
+      expect(game.isCorrectGuess('')).toBe(false)
+
+      // Ensure no updates to guessedLetters or wrongGuesses.
+      expect(game.guessedLetters).toEqual([])
+      expect(game.wrongGuesses).toEqual([])
+    })
+
+    test('should not modify guessedLetters or wrongGuesses for invalid input', () => {
+      game.isCorrectGuess('1') // Invalid input.
+      game.isCorrectGuess('@') // Invalid input.
+
+      expect(game.guessedLetters).toEqual([]) // Nothing should be added.
+      expect(game.wrongGuesses).toEqual([]) // Nothing should be added.
+    })
+  })
 
   describe('Correct and incorrect guesses', () => {
     // Testing av rätta svaret.
