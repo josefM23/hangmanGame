@@ -97,4 +97,26 @@ describe('Game', () => {
       expect(game.isGameOver()).toBe(false)
     })
   })
+  // jag saknar det att ha view.js igång för detta (det sk mycket ändra med des implemnetation).
+  describe('getWordDisplay method', () => {
+    test('should return only underscres when no letters are guesed', () => {
+      expect(game.getWordDisplay()).toBe('_ _ _ _ _ _ _') // For "hangman".
+    })
+  
+    test('should return correct letters and underscores for guessed letters', () => {
+      game.isCorrectGuess('h')
+      game.isCorrectGuess('a')
+      expect(game.getWordDisplay()).toBe('h a _ _ _ a _')
+    })
+   
+    test('should return the full word when all letters are guessed', () => {
+      game.isCorrectGuess('h')
+      game.isCorrectGuess('a')
+      game.isCorrectGuess('n')
+      game.isCorrectGuess('g')
+      game.isCorrectGuess('m')
+      expect(game.getWordDisplay()).toBe('h a n g m a n')
+    })
+  })
+
 })
