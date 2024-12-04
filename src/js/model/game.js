@@ -22,28 +22,48 @@ export class Game {
   }
 
   /**
-   * Checks if a guessed letter is part of the word.
-   * Tracks wrong guesses separately.
+   * Sanitizes input to ensure it is a single lowercase letter.
+   *
+   * @param {string} letter - The input to sanitize.
+   * @returns {string} - The sanitized letter.
+   * @throws {Error} - If the input is invalid.
+   */
+  sanitizeLetter (letter) {
+    const sanitized = letter.toLowerCase()
+    if (!/^[a-z]$/.test(sanitized)) {
+      throw new Error('Invalid input. Please enter a single letter (a-z).')
+    }
+    return sanitized
+  }
+
+  /**
+   * Checks if a guessed letter is valid and updates game state.
    *
    * @param {string} letter - The letter to check.
    * @returns {boolean} - True if the letter is in the word, false otherwise.
    */
   isCorrectGuess (letter) {
-    letter = letter.toLowerCase()
+    try {
+      const sanitizedLetter = this.sanitizeLetter(letter)
 
-    // Ignore the guess if the letter has already been guessed.
-    if (this.guessedLetters.includes(letter)) {
-      return this.word.includes(letter)
+      // Ignore the guess if the letter has already been guessed.
+      if (this.guessedLetters.includes(sanitizedLetter)) {
+        return this.word.includes(sanitizedLetter)
+      }
+
+      // Add the guessed letter to the guessed letters list.
+      this.guessedLetters.push(sanitizedLetter)
+
+      // Add to wrong guesses if the letter is not in the word.
+      if (!this.word.includes(sanitizedLetter)) {
+        this.wrongGuesses.push(sanitizedLetter)
+        return false
+      }
+
+      return true
+    } catch (error) {
+      // Ignore invalid input.
+      return false
     }
-
-    // Add the guessed letter to the guessed letters list.
-    this.guessedLetters.push(letter)
-
-    // Add to wrong guesses if the letter is not in the word.
-    if (!this.word.includes(letter)) {
-      this.wrongGuesses.push(letter)
-    }
-
-    return this.word.includes(letter)
   }
 }
