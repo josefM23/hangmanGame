@@ -67,4 +67,34 @@ describe('Game', () => {
       expect(game.wrongGuesses).toEqual(['x', 'y']) // Both incorrect guesses in the list.
     })
   })
+
+  describe('isWin method', () => {
+    test('should return true when all letters are guessed', () => {
+      game.isCorrectGuess('h')
+      game.isCorrectGuess('a')
+      game.isCorrectGuess('n')
+      game.isCorrectGuess('g')
+      game.isCorrectGuess('m')
+
+      expect(game.isWin()).toBe(true)
+    })
+
+    test('should return false when there are unguessed letters', () => {
+      game.isCorrectGuess('h')
+      game.isCorrectGuess('a')
+
+      expect(game.isWin()).toBe(false)
+    })
+
+    test('should return true even with duplicate guesses', () => {
+      game.isCorrectGuess('h')
+      game.isCorrectGuess('h') // Duplicate guess
+      game.isCorrectGuess('a')
+      game.isCorrectGuess('n')
+      game.isCorrectGuess('g')
+      game.isCorrectGuess('m')
+
+      expect(game.isWin()).toBe(true)
+    })
+  })
 })
