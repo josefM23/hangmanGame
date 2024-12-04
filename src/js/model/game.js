@@ -75,4 +75,15 @@ export class Game {
   isWin () {
     return this.word.split('').every(letter => this.guessedLetters.includes(letter))
   }
+
+  /**
+   * Determines if the game is over.
+   * The game is over if the player has won or the number of wrong guesses exceeds the maximum allowed.
+   *
+   * @returns {boolean} - True if the game is over, false otherwise.
+   */
+  isGameOver () {
+    const MAX_WRONG_GUESSES = 5 // Maximum allowed incorrect guesses
+    return this.isWin() || this.wrongGuesses.length > MAX_WRONG_GUESSES
+  }
 }
