@@ -14,6 +14,8 @@ describe('Game', () => {
   beforeEach(() => {
     game = new Game('hangman')
   })
+  
+  
 
   describe('Correct and incorrect guesses', () => {
     // Testing av rätta svaret.
@@ -27,7 +29,7 @@ describe('Game', () => {
     })
   })
 
-    // Testing av dublla bokstaver.(ignorera andra försåkt)
+    // Testing av dublla bokstaver.(ignorera andra försåkt).
   describe('Tracking guesses', () => {
     test('should ignore duplicate guesses', () => {
       game.isCorrectGuess('h') // First guess.
