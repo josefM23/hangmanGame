@@ -2,7 +2,7 @@
  * Tests for the Game module.
  * This test file focuses on the general functionality of the Hangman game logic.
  *
- * @author Josef Matyasek <jm224ae@student.lnu.se>
+ * @author Josef Matyasek
  * @version 1.0.0
  */
 
@@ -14,26 +14,20 @@ describe('Game', () => {
   beforeEach(() => {
     game = new Game('hangman')
   })
-  
+
   describe('Input validation', () => {
     test('should accept valid letters (a-z)', () => {
-      expect(game.isCorrectGuess('a')).toBe(true)
-      expect(game.isCorrectGuess('H')).toBe(true) // Should handle case insensitivity.
+      const validInputs = ['a', 'H']
+      validInputs.forEach(input => {
+        expect(game.isCorrectGuess(input)).toBe(true)
+      })
     })
 
     test('should ignore invalid input (numbers, symbols, empty string)', () => {
-      expect(game.isCorrectGuess('1')).toBe(false)
-      expect(game.isCorrectGuess('@')).toBe(false)
-      expect(game.isCorrectGuess('')).toBe(false)
-
-      // Ensure no updates to guessedLetters or wrongGuesses.
-      expect(game.guessedLetters).toEqual([])
-      expect(game.wrongGuesses).toEqual([])
-    })
-
-    test('should not modify guessedLetters or wrongGuesses for invalid input', () => {
-      game.isCorrectGuess('1') // Invalid input.
-      game.isCorrectGuess('@') // Invalid input.
+      const invalidInputs = ['1', '@', '']
+      invalidInputs.forEach(input => {
+        expect(game.isCorrectGuess(input)).toBe(false)
+      })
 
       expect(game.guessedLetters).toEqual([]) // Nothing should be added.
       expect(game.wrongGuesses).toEqual([]) // Nothing should be added.
@@ -50,7 +44,7 @@ describe('Game', () => {
     })
   })
 
-  describe('Handling and tracking duplicate and incorrect guesses', () => {
+  describe('Handling guesses', () => {
     test('should ignore duplicate guesses', () => {
       game.isCorrectGuess('h') // First guess.
       game.isCorrectGuess('h') // Duplicate guess.
@@ -58,69 +52,49 @@ describe('Game', () => {
     })
 
     test('should track wrong guesses separately', () => {
-      game.isCorrectGuess('x') // Incorrect guess.
-      game.isCorrectGuess('y') // Another incorrect guess.
-      expect(game.wrongGuesses).toEqual(['x', 'y']) // Both incorrect guesses in the list.
+      const wrongGuesses = ['x', 'y']
+      wrongGuesses.forEach(guess => game.isCorrectGuess(guess))
+      expect(game.wrongGuesses).toEqual(wrongGuesses) // Track all wrong guesses.
     })
   })
 
-  describe('isWin method', () => {
+  describe('Winning condition (isWin)', () => {
     test('should return true when all letters are guessed', () => {
-      game.isCorrectGuess('h')
-      game.isCorrectGuess('a')
-      game.isCorrectGuess('n')
-      game.isCorrectGuess('g')
-      game.isCorrectGuess('m')
-
+      const correctGuesses = ['h', 'a', 'n', 'g', 'm']
+      correctGuesses.forEach(guess => game.isCorrectGuess(guess))
       expect(game.isWin()).toBe(true)
     })
 
     test('should return false when there are unguessed letters', () => {
       game.isCorrectGuess('h')
       game.isCorrectGuess('a')
-
       expect(game.isWin()).toBe(false)
     })
 
     test('should return true even with duplicate guesses', () => {
-      game.isCorrectGuess('h')
-      game.isCorrectGuess('h') // Duplicate guess.
-      game.isCorrectGuess('a')
-      game.isCorrectGuess('n')
-      game.isCorrectGuess('g')
-      game.isCorrectGuess('m')
-
+      const guesses = ['h', 'h', 'a', 'n', 'g', 'm']
+      guesses.forEach(guess => game.isCorrectGuess(guess))
       expect(game.isWin()).toBe(true)
     })
   })
 
-  describe('isGameOver method', () => {
+  describe('Game over condition (isGameOver)', () => {
     test('should return true when the player has won', () => {
-      game.isCorrectGuess('h')
-      game.isCorrectGuess('a')
-      game.isCorrectGuess('n')
-      game.isCorrectGuess('g')
-      game.isCorrectGuess('m')
-
-      expect(game.isGameOver()).toBe(true) // Game over because the player won.(great play...)
+      const correctGuesses = ['h', 'a', 'n', 'g', 'm']
+      correctGuesses.forEach(guess => game.isCorrectGuess(guess))
+      expect(game.isGameOver()).toBe(true)
     })
 
     test('should return true when the player has lost', () => {
-      game.isCorrectGuess('x')
-      game.isCorrectGuess('y')
-      game.isCorrectGuess('z')
-      game.isCorrectGuess('q')
-      game.isCorrectGuess('w')
-      game.isCorrectGuess('e') // Exceeding max wrong guesses (assuming 5 max it will be more... we will see..).
-
-      expect(game.isGameOver()).toBe(true) // Game over because the player lost.
+      const wrongGuesses = ['x', 'y', 'z', 'q', 'w', 'e']
+      wrongGuesses.forEach(guess => game.isCorrectGuess(guess))
+      expect(game.isGameOver()).toBe(true)
     })
 
     test('should return false when the game is still ongoing', () => {
       game.isCorrectGuess('h')
-      game.isCorrectGuess('x') // One wrong guess, game should still continue.
-
-      expect(game.isGameOver()).toBe(false) // Game is not over yet.
+      game.isCorrectGuess('x') // One wrong guess.
+      expect(game.isGameOver()).toBe(false)
     })
   })
 })

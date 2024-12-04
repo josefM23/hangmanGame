@@ -83,7 +83,7 @@ export class Game {
    * @returns {boolean} - True if the game is over, false otherwise.
    */
   isGameOver () {
-    const MAX_WRONG_GUESSES = 5 // Maximum allowed incorrect guesses
+    const MAX_WRONG_GUESSES = 5 // Maximum allowed incorrect guesses(It will be more in a future..)
     return this.isWin() || this.wrongGuesses.length > MAX_WRONG_GUESSES
   }
 }
