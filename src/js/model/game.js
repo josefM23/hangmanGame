@@ -66,4 +66,13 @@ export class Game {
       return false
     }
   }
+
+  /**
+   * Determines if the player has won the game.
+   *
+   * @returns {boolean} - True if all letters in the word have been guessed, false otherwise.
+   */
+  isWin () {
+    return this.word.split('').every(letter => this.guessedLetters.includes(letter))
+  }
 }
