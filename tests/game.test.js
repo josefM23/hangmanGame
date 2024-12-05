@@ -17,15 +17,13 @@ describe('Game', () => {
 
   describe('Input validation', () => {
     test('should accept valid letters (a-z)', () => {
-      const validInputs = ['a', 'H']
-      validInputs.forEach(input => {
+      ['a', 'H'].forEach(input => {
         expect(game.isCorrectGuess(input)).toBe(true)
       })
     })
 
     test('should ignore invalid input (numbers, symbols, empty string)', () => {
-      const invalidInputs = ['1', '@', '']
-      invalidInputs.forEach(input => {
+      ['1', '@', ''].forEach(input => {
         expect(game.isCorrectGuess(input)).toBe(false)
       })
 
@@ -46,22 +44,20 @@ describe('Game', () => {
 
   describe('Handling guesses', () => {
     test('should ignore duplicate guesses', () => {
-      game.isCorrectGuess('h') // First guess.
+      game.isCorrectGuess('h')
       game.isCorrectGuess('h') // Duplicate guess.
-      expect(game.guessedLetters).toEqual(['h']) // Only one 'h' in the list.
+      expect(game.guessedLetters).toEqual(['h'])
     })
 
     test('should track wrong guesses separately', () => {
-      const wrongGuesses = ['x', 'y']
-      wrongGuesses.forEach(guess => game.isCorrectGuess(guess))
-      expect(game.wrongGuesses).toEqual(wrongGuesses) // Track all wrong guesses.
+      ['x', 'y'].forEach(guess => game.isCorrectGuess(guess))
+      expect(game.wrongGuesses).toEqual(['x', 'y'])
     })
   })
 
   describe('Winning condition (isWin)', () => {
     test('should return true when all letters are guessed', () => {
-      const correctGuesses = ['h', 'a', 'n', 'g', 'm']
-      correctGuesses.forEach(guess => game.isCorrectGuess(guess))
+      ['h', 'a', 'n', 'g', 'm'].forEach(guess => game.isCorrectGuess(guess))
       expect(game.isWin()).toBe(true)
     })
 
@@ -72,22 +68,19 @@ describe('Game', () => {
     })
 
     test('should return true even with duplicate guesses', () => {
-      const guesses = ['h', 'h', 'a', 'n', 'g', 'm']
-      guesses.forEach(guess => game.isCorrectGuess(guess))
+      ['h', 'h', 'a', 'n', 'g', 'm'].forEach(guess => game.isCorrectGuess(guess))
       expect(game.isWin()).toBe(true)
     })
   })
 
   describe('Game over condition (isGameOver)', () => {
     test('should return true when the player has won', () => {
-      const correctGuesses = ['h', 'a', 'n', 'g', 'm']
-      correctGuesses.forEach(guess => game.isCorrectGuess(guess))
+      ['h', 'a', 'n', 'g', 'm'].forEach(guess => game.isCorrectGuess(guess))
       expect(game.isGameOver()).toBe(true)
     })
 
     test('should return true when the player has lost', () => {
-      const wrongGuesses = ['x', 'y', 'z', 'q', 'w', 'e']
-      wrongGuesses.forEach(guess => game.isCorrectGuess(guess))
+      ['x', 'y', 'z', 'q', 'w', 'e'].forEach(guess => game.isCorrectGuess(guess))
       expect(game.isGameOver()).toBe(true)
     })
 
@@ -97,24 +90,19 @@ describe('Game', () => {
       expect(game.isGameOver()).toBe(false)
     })
   })
-  // Jag saknar det att ha view.js igång för detta (det sk mycket ändra med des implemnetation).
+
   describe('getWordDisplay method', () => {
-    test('should return only underscres when no letters are guesed', () => {
+    test('should return only underscores when no letters are guessed', () => {
       expect(game.getWordDisplay()).toBe('_ _ _ _ _ _ _') // For "hangman".
     })
-  
+
     test('should return correct letters and underscores for guessed letters', () => {
-      game.isCorrectGuess('h')
-      game.isCorrectGuess('a')
+      ['h', 'a'].forEach(guess => game.isCorrectGuess(guess))
       expect(game.getWordDisplay()).toBe('h a _ _ _ a _')
     })
-   
+
     test('should return the full word when all letters are guessed', () => {
-      game.isCorrectGuess('h')
-      game.isCorrectGuess('a')
-      game.isCorrectGuess('n')
-      game.isCorrectGuess('g')
-      game.isCorrectGuess('m')
+      ['h', 'a', 'n', 'g', 'm'].forEach(guess => game.isCorrectGuess(guess))
       expect(game.getWordDisplay()).toBe('h a n g m a n')
     })
   })

@@ -32,11 +32,11 @@ Jag har nu någon grund struktur och vet vad osv. nu ska jag bara går till de k
 - [x] `isGameOver`  
   - Kontrollera om spelet är över (vinst eller förlust).
 
-### Metoder att implementera.
-- [ ] `getWordDisplay`  
+- [x] `getWordDisplay`  
   - Returnera ordet som en sträng med `_` för ogissade bokstäver.  
     - Exempel: `"h _ n g m _ n"`
 
+### Metoder att implementera.
 - [ ] `reset`  
   - Återställ spelet med ett nytt ord.  
   - Nollställ listorna för korrekta och felaktiga gissningar.
