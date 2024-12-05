@@ -36,10 +36,11 @@ Jag har nu någon grund struktur och vet vad osv. nu ska jag bara går till de k
   - Returnera ordet som en sträng med `_` för ogissade bokstäver.  
     - Exempel: `"h _ n g m _ n"`
 
-### Metoder att implementera.
-- [ ] `reset`  
+- [x] `reset`  
   - Återställ spelet med ett nytt ord.  
   - Nollställ listorna för korrekta och felaktiga gissningar.
+
+  ### Metoder att implementera.
 
 # View.js.
 
@@ -106,7 +107,8 @@ Jag har nu någon grund struktur och vet vad osv. nu ska jag bara går till de k
     - Initierar ett nytt spel med ett nytt ord och nollståller gissningar och animationtr.
 - [ ] `a`
 
-# Index.js (den som är i src katalogen jag använer den som typ App.java som lite statsk som startar spelet andra index.js är bara för att importera saker...)
+# Index.js 
+- (den som är i src katalogen jag använer den som typ App.java som lite statsk som startar spelet andra index.js är bara för att importera saker...)
 
 ## Importera komponenter
 - importera index.js från js mappen (som importerar andra undeligande index.js och de slutligen importerar game.js och view.js och controler.js)

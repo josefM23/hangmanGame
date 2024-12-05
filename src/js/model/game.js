@@ -98,4 +98,16 @@ export class Game {
       .map(letter => (this.guessedLetters.includes(letter) ? letter : '_')) // Replace unguessd letters with '_'.
       .join(' ') // Join the aray back into a string with spaces.
   }
+
+  /**
+   * Resets the game state with a new word.
+   * Clears all guessed letters and wrong guesses, and sets a new word.
+   *
+   * @param {string} newWord - The new word to guess.
+   */
+  reset (newWord) {
+    this.word = newWord.toLowerCase() // Set the new word and normalize to lowercase.
+    this.guessedLetters = [] // Clear guessed letters.
+    this.wrongGuesses = [] // Clear wrong guesses.
+  }
 }
