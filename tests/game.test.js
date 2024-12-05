@@ -106,4 +106,30 @@ describe('Game', () => {
       expect(game.getWordDisplay()).toBe('h a n g m a n')
     })
   })
+
+  describe('reset method', () => {
+    test('should reset the game state with a new word', () => {
+      game.isCorrectGuess('h') // Make some guesses.
+      game.isCorrectGuess('x')
+  
+      game.reset('newword') // Reset the game with a new word.
+  
+      // Ensure guessed letters and wrong guesses are cleared.
+      expect(game.guessedLetters).toEqual([])
+      expect(game.wrongGuesses).toEqual([])
+  
+      // Ensure the new word is set.
+      expect(game.word).toBe('newword')
+    })
+  
+    test('should allow the game to function correctly after reset', () => {
+      game.isCorrectGuess('h') // Make some guesses.
+      game.isCorrectGuess('x')
+  
+      game.reset('resetword') // Reset the game with a new word.
+  
+      expect(game.isCorrectGuess('r')).toBe(true) // Test functionality with the new word.
+      expect(game.isCorrectGuess('z')).toBe(false)
+    })
+  })
 })
