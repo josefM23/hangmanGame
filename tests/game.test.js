@@ -97,7 +97,7 @@ describe('Game', () => {
       expect(game.isGameOver()).toBe(false)
     })
   })
-  // jag saknar det att ha view.js igång för detta (det sk mycket ändra med des implemnetation).
+  // Jag saknar det att ha view.js igång för detta (det sk mycket ändra med des implemnetation).
   describe('getWordDisplay method', () => {
     test('should return only underscres when no letters are guesed', () => {
       expect(game.getWordDisplay()).toBe('_ _ _ _ _ _ _') // For "hangman".
@@ -118,5 +118,4 @@ describe('Game', () => {
       expect(game.getWordDisplay()).toBe('h a n g m a n')
     })
   })
-
 })

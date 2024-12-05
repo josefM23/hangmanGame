@@ -86,4 +86,16 @@ export class Game {
     const MAX_WRONG_GUESSES = 5 // Maximum allowed incorrect guesses(It will be more in a future..)
     return this.isWin() || this.wrongGuesses.length > MAX_WRONG_GUESSES
   }
+
+  /**
+   * Returns the current state of the word, showing guessed letters and underscores for unguessed ones.
+   *
+   * @returns {string} - The word display with gussed letters and underscores.
+   */
+  getWordDisplay () {
+    return this.word
+      .split('') // Split the word into an aray of letters.
+      .map(letter => (this.guessedLetters.includes(letter) ? letter : '_')) // Replace unguessd letters with '_'.
+      .join(' ') // Join the aray back into a string with spaces.
+  }
 }
