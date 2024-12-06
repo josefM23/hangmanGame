@@ -1,2 +1,43 @@
 /* Placeholder for future styles */
 /* This file is intentionally left minimal for now. Add styles as needed. */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  #app {
+    text-align: center;
+  }
+  
+  #word-display {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+  
+  #wrong-guesses {
+    color: red;
+    font-size: 18px;
+  }
+  
+  #hangman {
+    margin: 20px 0;
+    height: 200px;
+  }
+  
+  #guess-input {
+    font-size: 18px;
+    padding: 10px;
+    margin-right: 10px;
+  }
+  
+  #guess-button {
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+  
