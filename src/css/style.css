@@ -1,44 +1,100 @@
 /* Placeholder for future styles */
 /* This file is intentionally left minimal for now. Add styles as needed. */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  #app {
-    text-align: center;
-  }
-  
-  #word-display {
-    font-size: 24px;
-    margin: 20px 0;
-  }
-  
-  #wrong-guesses {
-    color: red;
-    font-size: 18px;
-  }
-  
-  #hangman {
-    margin: 20px 0;
-    height: 200px;
-    width: 200px;
-  }
-  
-  #guess-input {
-    font-size: 18px;
-    padding: 10px;
-    margin-right: 10px;
-  }
-  
-  #guess-button {
-    padding: 10px 20px;
-    font-size: 18px;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#app {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+#game {
+  margin-top: 20px;
+}
+
+#game-message {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: green;
+}
+
+#word-display {
+  font-size: 24px;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+#wrong-guesses {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: red;
+}
+
+#hangman {
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+#input-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#guess-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#guess-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+#guess-button:hover {
+  background-color: #0056b3;
+}
+
+#reset-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+#reset-button:hover {
+  background-color: #a71d2a;
+}

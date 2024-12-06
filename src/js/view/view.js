@@ -57,43 +57,81 @@ export class View {
 
     if (!hangmanContainer) {
       return
-    } // Hantera om elementet inte finns.
+    }
 
     if (typeof step !== 'number' || step <= 0 || isNaN(step)) {
-      // Rensa innehållet om inga felaktiga gissningar finns.
       hangmanContainer.innerHTML = ''
       return
     }
 
     const svgSteps = [
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
-        <line x1="10" y1="90" x2="90" y2="90" stroke="black" />
-      </svg>`,
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
-        <line x1="10" y1="90" x2="90" y2="90" stroke="black" />
-        <line x1="30" y1="90" x2="30" y2="10" stroke="black" />
-      </svg>`,
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
-        <line x1="10" y1="90" x2="90" y2="90" stroke="black" />
-        <line x1="30" y1="90" x2="30" y2="10" stroke="black" />
-        <line x1="30" y1="10" x2="70" y2="10" stroke="black" />
-        <line x1="70" y1="10" x2="70" y2="20" stroke="black" />
-      </svg>`,
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
-        <line x1="10" y1="90" x2="90" y2="90" stroke="black" />
-        <line x1="30" y1="90" x2="30" y2="10" stroke="black" />
-        <line x1="30" y1="10" x2="70" y2="10" stroke="black" />
-        <line x1="70" y1="10" x2="70" y2="20" stroke="black" />
-        <circle cx="70" cy="30" r="10" stroke="black" fill="none" />
-      </svg>`,
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
-        <line x1="10" y1="90" x2="90" y2="90" stroke="black" />
-        <line x1="30" y1="90" x2="30" y2="10" stroke="black" />
-        <line x1="30" y1="10" x2="70" y2="10" stroke="black" />
-        <line x1="70" y1="10" x2="70" y2="20" stroke="black" />
-        <circle cx="70" cy="30" r="10" stroke="black" fill="none" />
-        <line x1="70" y1="40" x2="70" y2="70" stroke="black" />
-      </svg>`
+    // Steg 1: Baslinjen
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+      <line x1="10" y1="90" x2="90" y2="90" stroke="black" />
+    </svg>`,
+    // Steg 2: Stolpen
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+      <line x1="10" y1="90" x2="90" y2="90" stroke="black" />
+      <line x1="30" y1="90" x2="30" y2="10" stroke="black" />
+    </svg>`,
+    // Steg 3: Armen (horisontella linjen)
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+      <line x1="10" y1="90" x2="90" y2="90" stroke="black" />
+      <line x1="30" y1="90" x2="30" y2="10" stroke="black" />
+      <line x1="30" y1="10" x2="70" y2="10" stroke="black" />
+      <line x1="70" y1="10" x2="70" y2="20" stroke="black" />
+    </svg>`,
+    // Steg 4: Huvudet
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+      <line x1="10" y1="90" x2="90" y2="90" stroke="black" />
+      <line x1="30" y1="90" x2="30" y2="10" stroke="black" />
+      <line x1="30" y1="10" x2="70" y2="10" stroke="black" />
+      <line x1="70" y1="10" x2="70" y2="20" stroke="black" />
+      <circle cx="70" cy="30" r="10" stroke="black" fill="none" />
+    </svg>`,
+    // Steg 5: Kroppen
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+      <line x1="10" y1="90" x2="90" y2="90" stroke="black" />
+      <line x1="30" y1="90" x2="30" y2="10" stroke="black" />
+      <line x1="30" y1="10" x2="70" y2="10" stroke="black" />
+      <line x1="70" y1="10" x2="70" y2="20" stroke="black" />
+      <circle cx="70" cy="30" r="10" stroke="black" fill="none" />
+      <line x1="70" y1="40" x2="70" y2="70" stroke="black" />
+    </svg>`,
+    // Steg 6: Vänster arm
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+      <line x1="10" y1="90" x2="90" y2="90" stroke="black" />
+      <line x1="30" y1="90" x2="30" y2="10" stroke="black" />
+      <line x1="30" y1="10" x2="70" y2="10" stroke="black" />
+      <line x1="70" y1="10" x2="70" y2="20" stroke="black" />
+      <circle cx="70" cy="30" r="10" stroke="black" fill="none" />
+      <line x1="70" y1="40" x2="70" y2="70" stroke="black" />
+      <line x1="70" y1="50" x2="60" y2="60" stroke="black" />
+    </svg>`,
+    // Steg 7: Höger arm
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+      <line x1="10" y1="90" x2="90" y2="90" stroke="black" />
+      <line x1="30" y1="90" x2="30" y2="10" stroke="black" />
+      <line x1="30" y1="10" x2="70" y2="10" stroke="black" />
+      <line x1="70" y1="10" x2="70" y2="20" stroke="black" />
+      <circle cx="70" cy="30" r="10" stroke="black" fill="none" />
+      <line x1="70" y1="40" x2="70" y2="70" stroke="black" />
+      <line x1="70" y1="50" x2="60" y2="60" stroke="black" />
+      <line x1="70" y1="50" x2="80" y2="60" stroke="black" />
+    </svg>`,
+    // Steg 8: Benen
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+      <line x1="10" y1="90" x2="90" y2="90" stroke="black" />
+      <line x1="30" y1="90" x2="30" y2="10" stroke="black" />
+      <line x1="30" y1="10" x2="70" y2="10" stroke="black" />
+      <line x1="70" y1="10" x2="70" y2="20" stroke="black" />
+      <circle cx="70" cy="30" r="10" stroke="black" fill="none" />
+      <line x1="70" y1="40" x2="70" y2="70" stroke="black" />
+      <line x1="70" y1="50" x2="60" y2="60" stroke="black" />
+      <line x1="70" y1="50" x2="80" y2="60" stroke="black" />
+      <line x1="70" y1="70" x2="60" y2="80" stroke="black" />
+      <line x1="70" y1="70" x2="80" y2="80" stroke="black" />
+    </svg>`
     ]
 
     hangmanContainer.innerHTML = svgSteps[Math.min(step, svgSteps.length - 1)] || ''
