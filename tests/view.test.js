@@ -26,7 +26,7 @@ describe('View - bindGuess', () => {
     inputElement = document.getElementById('guess-input')
     mockHandler = jest.fn() // Mock-funktion för att kontrollera om den anropas.
 
-    // Skapa en instans av View
+    // Skapa en instans av View.
     view = new View()
   })
 
@@ -41,3 +41,29 @@ describe('View - bindGuess', () => {
     expect(mockHandler).toHaveBeenCalledWith('a') // Kontrollera att mockHandler anropades med rätt värde.
   })
 })
+// test för updateWordDisplay(wordDisplay) metoden.
+describe('View - updateWordDisplay', () => {
+  let view
+  let wordDisplayElement
+
+  beforeEach(() => {
+    document.body.innerHTML = `
+      <div>
+        <div id="word-display"></div>
+      </div>
+    `
+
+    wordDisplayElement = document.getElementById('word-display')
+
+    // Skapa en instans av View.
+    view = new View()
+  })
+
+  test('should update the word display in the DOM', () => {
+    const wordDisplay = 'h _ n g m _ n' // Exempelvis: För ordet "hangman".
+    view.updateWordDisplay(wordDisplay)
+
+    expect(wordDisplayElement.textContent).toBe(wordDisplay) // Kontrollera att DOM uppdateras korrekt.
+  })
+})
+
