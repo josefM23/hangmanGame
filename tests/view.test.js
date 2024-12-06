@@ -109,3 +109,42 @@ describe('View', () => {
     })
   })
 })
+// att det blir något att refactorisera...
+describe('drawHangman', () => {
+  let view
+  let hangmanElement
+
+  beforeEach(() => {
+    // Skapa en DOM-struktur för testen.
+    document.body.innerHTML = `
+      <div>
+        <div id="hangman"></div>
+      </div>
+    `
+    hangmanElement = document.getElementById('hangman')
+
+    view = new View()
+  })
+
+  test('should draw the first part of the hangman for one wrong guess', () => {
+    view.drawHangman(1) // En felaktig gissning.
+    expect(hangmanElement.innerHTML).toContain('<svg') // Kontrollera att SVG är renderad.
+  })
+
+  test('should update the hangman for multiple wrong guesses', () => {
+    view.drawHangman(3) // Tre felaktiga gissningar.
+    expect(hangmanElement.innerHTML).toContain('<svg') // Kontrollera att SVG är renderad.
+  })
+
+  test('should clear the hangman if no wrong guesses are present', () => {
+    view.drawHangman(0) // Noll felaktiga gissningar.
+    expect(hangmanElement.innerHTML).toBe('') // Kontrollera att inget är renderat.
+  })
+
+  test('should handle case where hangmanElement is null', () => {
+    document.body.innerHTML = '' // Ingen "hangman"-element.
+    view.drawHangman(1)
+    expect(document.getElementById('hangman')).toBeNull() // Kontrollera att inget fel kastas.
+  })
+})
+
