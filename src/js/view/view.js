@@ -11,13 +11,6 @@
  */
 export class View {
   /**
-   * Creates an instance of the View.
-   */
-  constructor () {
-    // TODO..
-  }
-
-  /**
    * Binds a handler function to the guess input field.
    *
    * @param {Function} handler - The function to handle user input.

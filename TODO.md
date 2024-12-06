@@ -104,11 +104,9 @@ Jag har nu någon grund struktur och vet vad osv. nu ska jag bara går till de k
     - Kontrollerar om spelet är Över.
     - Vid vinst/förlust informera View.js att vissa: "Victory"/ "Game Over"
 
-### Metoder att implementera.
-- [ ] `restartGame(newWord)`
+- [x] `restartGame(newWord)`
     - Återställer spelets tillstånd.
     - Initierar ett nytt spel med ett nytt ord och nollståller gissningar och animationtr.
-- [ ] `a`
 
 # Index.js 
 - (den som är i src katalogen jag använer den som typ App.java som lite statsk som startar spelet andra index.js är bara för att importera saker...)

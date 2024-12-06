@@ -47,4 +47,16 @@ export class Controller {
       this.view.showMessage('Game Over')
     }
   }
+
+  /**
+   * Restarts the game with a new word and resets the view.
+   *
+   * @param {string} newWord - The new word to use for the game.
+   */
+  restartGame (newWord) {
+    this.game.reset(newWord) // Återställ spelet med det nya ordet.
+    this.view.updateWordDisplay(this.game.getWordDisplay()) // Uppdatera ordet i vyn.
+    this.view.updateraWrongGuesses([]) // Rensa listan över felakiga gissningar.
+    this.view.drawHangman(0) // Återställ den hängande mannen.
+  }
 }
