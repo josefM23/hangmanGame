@@ -75,6 +75,10 @@ Jag har nu någon grund struktur och vet vad osv. nu ska jag bara går till de k
 - [x] `drawHangman()`
     - Bygger stegvis upp en hängande man baserad på antalet felaktiga gissnigar (måste räkna hur många - viss nivå av spelet?)
 
+### Metoder att implementera.
+- [ ] `showMessage(message)`
+  - Visar ett medelande, som Victory eller Game Over, till anvendaren
+
 # Controler.js.
 
 ## Hantera användarens gissnigar.

@@ -44,4 +44,19 @@ describe('Controller', () => {
       expect(view.updateWordDisplay).not.toHaveBeenCalled() // Kontrollera att vyn inte uppdateras.
     })
   })
+
+  describe('checkGameState', () => {
+    test('should inform view of victory if player wins', () => {
+      game.isWin = jest.fn(() => true) // Mocka att spelaren har vunnit.
+      game.isGameOver = jest.fn(() => false) // Spelet är inte över pga förlust.
+
+      jest.spyOn(view, 'showMessage') // Mocka View-metoden för att visa meddelande.
+
+      controller.checkGameState()
+
+      expect(game.isWin).toHaveBeenCalled() // Kontrollera att spelet kontrolleras för vinst.
+      expect(view.showMessage).toHaveBeenCalledWith('Victory!') // Kontrollera att rätt meddelande visas.
+    })
+  })
+
 })
