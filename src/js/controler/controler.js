@@ -36,4 +36,15 @@ export class Controller {
       this.view.updateWordDisplay(this.game.getWordDisplay())
     }
   }
+
+  /**
+   * Checks the current state of the game and updates the view accordingly.
+   */
+  checkGameState () {
+    if (this.game.isWin()) {
+      this.view.showMessage('Victory!')
+    } else if (this.game.isGameOver()) {
+      this.view.showMessage('Game Over')
+    }
+  }
 }

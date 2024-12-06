@@ -105,4 +105,16 @@ export class View {
 
     hangmanContainer.innerHTML = svgSteps[Math.min(step, svgSteps.length - 1)] || ''
   }
+
+  /**
+   * Displays a message to the user.
+   *
+   * @param {string} message - The message to display.
+   */
+  showMessage (message) {
+    const messageElement = document.getElementById('game-message')
+    if (messageElement) {
+      messageElement.textContent = message
+    }
+  }
 }
