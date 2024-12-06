@@ -50,6 +50,7 @@ describe('Controller', () => {
   describe('checkGameState', () => {
     test('should inform view of victory if player wins', () => {
       game.isWin = jest.fn(() => true)
+      game.isGameOver = jest.fn(() => false) // Spelet är inte över pga förlust.
 
       controller.checkGameState()
 
@@ -64,6 +65,15 @@ describe('Controller', () => {
 
       expect(view.showMessage).toHaveBeenCalledWith('Game Over')
     })
+
+    test('should not show any message if the game is ongoing', () => {
+      game.isWin = jest.fn(() => false)
+      game.isGameOver = jest.fn(() => false)
+
+      controller.checkGameState()
+
+      expect(view.showMessage).not.toHaveBeenCalled()
+    })
   })
 
   describe('restartGame', () => {
@@ -76,6 +86,7 @@ describe('Controller', () => {
       expect(view.updateWordDisplay).toHaveBeenCalledWith(game.getWordDisplay())
       expect(view.updateraWrongGuesses).toHaveBeenCalledWith([])
       expect(view.drawHangman).toHaveBeenCalledWith(0)
+      
     })
   })
 })

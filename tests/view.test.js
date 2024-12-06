@@ -161,5 +161,19 @@ describe('View', () => {
       view.showMessage('Victory!')
       expect(document.getElementById('game-message')).toBeNull()
     })
+
+    test('should clear the message when called with an empty string', () => {
+      document.body.innerHTML = `
+        <div>
+          <div id="game-message">Game Over</div>
+        </div>
+      `
+    
+      view.showMessage('') // Anropa med en tom sträng.
+    
+      const messageElement = document.getElementById('game-message')
+      expect(messageElement.textContent).toBe('') // Kontrollera att meddelandet rensas.
+    })
+    
   })
 })

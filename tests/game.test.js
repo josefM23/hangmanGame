@@ -78,18 +78,20 @@ describe('Game', () => {
       ['h', 'a', 'n', 'g', 'm'].forEach(guess => game.isCorrectGuess(guess))
       expect(game.isGameOver()).toBe(true)
     })
-
+  
     test('should return true when the player has lost', () => {
-      ['x', 'y', 'z', 'q', 'w', 'e'].forEach(guess => game.isCorrectGuess(guess))
-      expect(game.isGameOver()).toBe(true)
+      const wrongGuesses = ['x', 'y', 'z', 'q', 'w', 'e', 'r'] // 6 felaktiga gissningar
+      wrongGuesses.forEach(guess => game.isCorrectGuess(guess))
+      expect(game.isGameOver()).toBe(true) // Kontrollera att spelet är över
     })
-
+  
     test('should return false when the game is still ongoing', () => {
-      game.isCorrectGuess('h')
-      game.isCorrectGuess('x') // One wrong guess.
-      expect(game.isGameOver()).toBe(false)
+      game.isCorrectGuess('h') // Rätt gissning
+      game.isCorrectGuess('x') // En felaktig gissning
+      expect(game.isGameOver()).toBe(false) // Kontrollera att spelet fortsätter
     })
   })
+  
 
   describe('getWordDisplay method', () => {
     test('should return only underscores when no letters are guessed', () => {

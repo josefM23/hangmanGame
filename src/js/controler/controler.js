@@ -58,5 +58,6 @@ export class Controller {
     this.view.updateWordDisplay(this.game.getWordDisplay()) // Uppdatera ordet i vyn.
     this.view.updateraWrongGuesses([]) // Rensa listan över felakiga gissningar.
     this.view.drawHangman(0) // Återställ den hängande mannen.
+    this.view.showMessage('') // Rensa spelets meddelande.
   }
 }
