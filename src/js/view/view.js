@@ -66,7 +66,7 @@ export class View {
       return
     } // Hantera om elementet inte finns.
 
-    if (step === 0) {
+    if (typeof step !== 'number' || step <= 0 || isNaN(step)) {
       // Rensa innehållet om inga felaktiga gissningar finns.
       hangmanContainer.innerHTML = ''
       return
