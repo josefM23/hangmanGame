@@ -96,14 +96,15 @@ Jag har nu någon grund struktur och vet vad osv. nu ska jag bara går till de k
 ## To-Do för Controler.js.
 
 ## Implementerade metoder.
-### Metoder att implementera.
-- [ ] `handleGuess(letter)`
+- [x] `handleGuess(letter)`
     - Tar emot användarens gissnig från View.js
     - Skickar gissnigen till Game.js- modellen och får tillbacka resultatet.
     - Uppdaterar View.js baserat på om gissningen var korrekt eller felaktig
-- [ ] `checkGameState()`
+- [x] `checkGameState()`
     - Kontrollerar om spelet är Över.
     - Vid vinst/förlust informera View.js att vissa: "Victory"/ "Game Over"
+
+### Metoder att implementera.
 - [ ] `restartGame(newWord)`
     - Återställer spelets tillstånd.
     - Initierar ett nytt spel med ett nytt ord och nollståller gissningar och animationtr.

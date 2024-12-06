@@ -22,6 +22,7 @@ describe('Controller', () => {
     jest.spyOn(view, 'updateWordDisplay')
     jest.spyOn(view, 'updateraWrongGuesses')
     jest.spyOn(view, 'drawHangman')
+    jest.spyOn(view, 'showMessage')
   })
 
   describe('handleGuess', () => {
@@ -50,13 +51,32 @@ describe('Controller', () => {
       game.isWin = jest.fn(() => true) // Mocka att spelaren har vunnit.
       game.isGameOver = jest.fn(() => false) // Spelet är inte över pga förlust.
 
-      jest.spyOn(view, 'showMessage') // Mocka View-metoden för att visa meddelande.
-
       controller.checkGameState()
 
       expect(game.isWin).toHaveBeenCalled() // Kontrollera att spelet kontrolleras för vinst.
       expect(view.showMessage).toHaveBeenCalledWith('Victory!') // Kontrollera att rätt meddelande visas.
     })
-  })
 
+    test('should inform view of "Game Over" if player loses', () => {
+      game.isWin = jest.fn(() => false) // Mocka att spelaren inte har vunnit.
+      game.isGameOver = jest.fn(() => true) // Mocka att spelet är över pga förlust.
+
+      controller.checkGameState()
+
+      expect(game.isWin).toHaveBeenCalled() // Kontrollera att spelet kontrolleras för vinst.
+      expect(game.isGameOver).toHaveBeenCalled() // Kontrollera att spelet kontrolleras för förlust.
+      expect(view.showMessage).toHaveBeenCalledWith('Game Over') // Kontrollera att rätt meddelande visas.
+    })
+
+    test('should not show any message if game is not over', () => {
+      game.isWin = jest.fn(() => false) // Mocka att spelet inte har vunnits.
+      game.isGameOver = jest.fn(() => false) // Mocka att spelet inte är över.
+
+      controller.checkGameState()
+
+      expect(game.isWin).toHaveBeenCalled() // Kontrollera att spelet kontrolleras för vinst.
+      expect(game.isGameOver).toHaveBeenCalled() // Kontrollera att spelet kontrolleras för förlust.
+      expect(view.showMessage).not.toHaveBeenCalled() // Kontrollera att inget meddelande visas.
+    })
+  })
 })
