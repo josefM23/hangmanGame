@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1733476426805" clover="3.2.0">
-  <project timestamp="1733476426805" name="All files">
-    <metrics statements="32" coveredstatements="32" conditionals="12" coveredconditionals="11" methods="13" coveredmethods="13" elements="57" coveredelements="56" complexity="0" loc="32" ncloc="32" packages="2" files="2" classes="2"/>
+<coverage generated="1733476807823" clover="3.2.0">
+  <project timestamp="1733476807823" name="All files">
+    <metrics statements="32" coveredstatements="32" conditionals="12" coveredconditionals="12" methods="13" coveredmethods="13" elements="57" coveredelements="57" complexity="0" loc="32" ncloc="32" packages="2" files="2" classes="2"/>
     <package name="model">
       <metrics statements="25" coveredstatements="25" conditionals="10" coveredconditionals="10" methods="9" coveredmethods="9"/>
       <file name="game.js" path="C:\Users\rohly\Desktop\1dv609test\hangmanGame\src\js\model\game.js">
@@ -34,15 +34,15 @@
       </file>
     </package>
     <package name="view">
-      <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="4"/>
+      <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
       <file name="view.js" path="C:\Users\rohly\Desktop\1dv609test\hangmanGame\src\js\view\view.js">
-        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="4"/>
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="40" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="40" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="41" count="1" type="stmt"/>
       </file>
     </package>

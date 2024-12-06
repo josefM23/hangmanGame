@@ -52,18 +52,28 @@ describe('View - updateWordDisplay', () => {
         <div id="word-display"></div>
       </div>
     `
-
+    
     wordDisplayElement = document.getElementById('word-display')
 
-    // Skapa en instans av View.
     view = new View()
   })
 
   test('should update the word display in the DOM', () => {
-    const wordDisplay = 'h _ n g m _ n' // Exempelvis: För ordet "hangman".
+    const wordDisplay = 'h _ n g m _ n' // För ordet "hangman".
     view.updateWordDisplay(wordDisplay)
 
     expect(wordDisplayElement.textContent).toBe(wordDisplay) // Kontrollera att DOM uppdateras korrekt.
+  })
+ // (fix coverage till 100%.)
+  test('should handle case where wordDisplayElement is null', () => {
+    document.body.innerHTML = `` // Ingen element med id "word-display".
+    const wordDisplay = 'h _ n g m _ n'
+    
+    // Försök att kalla metoden.
+    view.updateWordDisplay(wordDisplay)
+  
+    // Inget att förvänta sig i DOM eftersom elementet saknas.
+    expect(document.getElementById('word-display')).toBeNull()
   })
 })
 
