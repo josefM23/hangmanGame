@@ -13,6 +13,7 @@ describe('View', () => {
 
   beforeEach(() => {
     view = new View()
+    document.body.innerHTML = ''
   })
 
   const setInnerHTML = (html) => {
@@ -20,8 +21,7 @@ describe('View', () => {
   }
 
   describe('bindGuess', () => {
-    let inputElement
-    let mockHandler
+    let inputElement, mockHandler
 
     beforeEach(() => {
       setInnerHTML(`
@@ -37,8 +37,7 @@ describe('View', () => {
       view.bindGuess(mockHandler)
 
       inputElement.value = 'a'
-      const inputEvent = new Event('input')
-      inputElement.dispatchEvent(inputEvent)
+      inputElement.dispatchEvent(new Event('input'))
 
       expect(mockHandler).toHaveBeenCalledWith('a')
     })
@@ -56,17 +55,12 @@ describe('View', () => {
     test('should update the word display in the DOM', () => {
       const wordDisplay = 'h _ n g m _ n'
       view.updateWordDisplay(wordDisplay)
-
-      const wordDisplayElement = document.getElementById('word-display')
-      expect(wordDisplayElement.textContent).toBe(wordDisplay)
+      expect(document.getElementById('word-display').textContent).toBe(wordDisplay)
     })
 
     test('should handle case where wordDisplayElement is null', () => {
       setInnerHTML('')
-      const wordDisplay = 'h _ n g m _ n'
-
-      view.updateWordDisplay(wordDisplay)
-
+      view.updateWordDisplay('h _ n g m _ n')
       expect(document.getElementById('word-display')).toBeNull()
     })
   })
@@ -83,22 +77,17 @@ describe('View', () => {
     test('should display a list of wrong guesses in the DOM', () => {
       const wrongGuesses = ['x', 'y', 'z']
       view.updateraWrongGuesses(wrongGuesses)
-
-      const wrongGuessesElement = document.getElementById('wrong-guesses')
-      expect(wrongGuessesElement.textContent).toBe('x, y, z')
+      expect(document.getElementById('wrong-guesses').textContent).toBe('x, y, z')
     })
 
     test('should display an empty string when no wrong guesses are present', () => {
       view.updateraWrongGuesses([])
-
-      const wrongGuessesElement = document.getElementById('wrong-guesses')
-      expect(wrongGuessesElement.textContent).toBe('')
+      expect(document.getElementById('wrong-guesses').textContent).toBe('')
     })
 
     test('should handle case where wrongGuessesElement is null', () => {
       setInnerHTML('')
       view.updateraWrongGuesses(['x', 'y', 'z'])
-
       expect(document.getElementById('wrong-guesses')).toBeNull()
     })
   })
@@ -139,18 +128,38 @@ describe('View', () => {
     test('should render nothing if step is invalid', () => {
       view.drawHangman(null)
       expect(hangmanElement.innerHTML).toBe('')
-    
       view.drawHangman(undefined)
       expect(hangmanElement.innerHTML).toBe('')
-    
       view.drawHangman('string')
       expect(hangmanElement.innerHTML).toBe('')
     })
-    
+
     test('should use the last SVG step if step exceeds available steps', () => {
       const maxSteps = 5
       view.drawHangman(maxSteps + 1)
       expect(hangmanElement.innerHTML).toContain('<line x1="70" y1="40" x2="70" y2="70"')
-    }) 
+    })
+  })
+
+  describe('showMessage', () => {
+    beforeEach(() => {
+      setInnerHTML(`
+        <div>
+          <div id="game-message"></div>
+        </div>
+      `)
+    })
+
+    test('should display the correct message in the DOM', () => {
+      const message = 'Victory!'
+      view.showMessage(message)
+      expect(document.getElementById('game-message').textContent).toBe(message)
+    })
+
+    test('should handle case where message element is missing', () => {
+      setInnerHTML('')
+      view.showMessage('Victory!')
+      expect(document.getElementById('game-message')).toBeNull()
+    })
   })
 })

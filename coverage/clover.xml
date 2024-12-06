@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1733502999180" clover="3.2.0">
-  <project timestamp="1733502999180" name="All files">
-    <metrics statements="54" coveredstatements="51" conditionals="31" coveredconditionals="26" methods="19" coveredmethods="19" elements="104" coveredelements="96" complexity="0" loc="54" ncloc="54" packages="3" files="3" classes="3"/>
+<coverage generated="1733503562267" clover="3.2.0">
+  <project timestamp="1733503562267" name="All files">
+    <metrics statements="54" coveredstatements="52" conditionals="31" coveredconditionals="27" methods="19" coveredmethods="19" elements="104" coveredelements="98" complexity="0" loc="54" ncloc="54" packages="3" files="3" classes="3"/>
     <package name="controler">
       <metrics statements="8" coveredstatements="6" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="3"/>
       <file name="controler.js" path="C:\Users\rohly\Desktop\1dv609test\hangmanGame\src\js\controler\controler.js">
@@ -48,9 +48,9 @@
       </file>
     </package>
     <package name="view">
-      <metrics statements="21" coveredstatements="20" conditionals="15" coveredconditionals="13" methods="7" coveredmethods="7"/>
+      <metrics statements="21" coveredstatements="21" conditionals="15" coveredconditionals="14" methods="7" coveredmethods="7"/>
       <file name="view.js" path="C:\Users\rohly\Desktop\1dv609test\hangmanGame\src\js\view\view.js">
-        <metrics statements="21" coveredstatements="20" conditionals="15" coveredconditionals="13" methods="7" coveredmethods="7"/>
+        <metrics statements="21" coveredstatements="21" conditionals="15" coveredconditionals="14" methods="7" coveredmethods="7"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
@@ -69,9 +69,9 @@
         <line num="72" count="4" type="stmt"/>
         <line num="75" count="3" type="stmt"/>
         <line num="106" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="115" count="1" type="stmt"/>
-        <line num="116" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="117" count="0" type="stmt"/>
+        <line num="115" count="3" type="stmt"/>
+        <line num="116" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="117" count="1" type="stmt"/>
       </file>
     </package>
   </project>
