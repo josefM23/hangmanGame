@@ -29,4 +29,16 @@ export class View {
       handler(letter)
     })
   }
+
+  /**
+   * Updates the word display in the DOM.
+   *
+   * @param {string} wordDisplay - The current state of the word to display.
+   */
+  updateWordDisplay (wordDisplay) {
+    const wordDisplayElement = document.getElementById('word-display')
+    if (wordDisplayElement) {
+      wordDisplayElement.textContent = wordDisplay
+    }
+  }
 }
