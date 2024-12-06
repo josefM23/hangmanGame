@@ -135,5 +135,22 @@ describe('View', () => {
       view.drawHangman(1)
       expect(document.getElementById('hangman')).toBeNull()
     })
+
+    test('should render nothing if step is invalid', () => {
+      view.drawHangman(null)
+      expect(hangmanElement.innerHTML).toBe('')
+    
+      view.drawHangman(undefined)
+      expect(hangmanElement.innerHTML).toBe('')
+    
+      view.drawHangman('string')
+      expect(hangmanElement.innerHTML).toBe('')
+    })
+    
+    test('should use the last SVG step if step exceeds available steps', () => {
+      const maxSteps = 5
+      view.drawHangman(maxSteps + 1)
+      expect(hangmanElement.innerHTML).toContain('<line x1="70" y1="40" x2="70" y2="70"')
+    }) 
   })
 })
