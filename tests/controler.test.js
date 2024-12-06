@@ -27,11 +27,21 @@ describe('Controller', () => {
   describe('handleGuess', () => {
     test('should update the game and view on a correct guess', () => {
       game.isCorrectGuess = jest.fn(() => true) // Mocka korrekt gissning.
+      jest.spyOn(game, 'getWordDisplay').mockReturnValue('h _ n g m _ n') // Mocka ordvisning.
 
       controller.handleGuess('h')
 
       expect(game.isCorrectGuess).toHaveBeenCalledWith('h') // Kontrollera att modellen uppdateras.
-      expect(view.updateWordDisplay).toHaveBeenCalledWith(game.getWordDisplay()) // Kontrollera att vyn uppdateras.
+      expect(view.updateWordDisplay).toHaveBeenCalledWith('h _ n g m _ n') // Kontrollera att vyn uppdateras.
+    })
+
+    test('should not update the view on an incorrect guess', () => {
+      game.isCorrectGuess = jest.fn(() => false) // Mocka felaktig gissning.
+
+      controller.handleGuess('z') // Testa med en felaktig bokstav.
+
+      expect(game.isCorrectGuess).toHaveBeenCalledWith('z') // Kontrollera att metoden anropas.
+      expect(view.updateWordDisplay).not.toHaveBeenCalled() // Kontrollera att vyn inte uppdateras.
     })
   })
 })
