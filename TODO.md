@@ -63,10 +63,10 @@ Jag har nu någon grund struktur och vet vad osv. nu ska jag bara går till de k
 ## To-Do för View.js.
 
 ## Implementerade metoder.
-### Metoder att implementera.
-- [ ] `blindGuess(handler)`
+- [x] `blindGuess(handler)`
     - Binder ett event för att hantera användarens gissningar.
 
+### Metoder att implementera.
 - [ ] `updateWordDisplay(wordDisplay)`
     - Updaterar visningen av ordet med korrect gissade bokstaver och _ för ogissande.
 

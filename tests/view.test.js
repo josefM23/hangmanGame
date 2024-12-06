@@ -6,6 +6,8 @@
  * @version 1.0.0
  */
 
+import { View } from '../src/js/view/view.js'
+
 
 // bindGuess(handler) test
 describe('View - bindGuess', () => {
@@ -14,7 +16,7 @@ describe('View - bindGuess', () => {
   let mockHandler
 
   beforeEach(() => {
-    // Skapa en DOM-struktur för testen
+    // Skapa en DOM-struktur för testen.
     document.body.innerHTML = `
       <div>
         <input id="guess-input" type="text" />
