@@ -73,11 +73,9 @@ describe('View', () => {
     })
   })
 
-  // updateraWrongGuesses test.
-  describe('View - updateraWrongGuesses', () => {
-    let view
+  describe('updateraWrongGuesses', () => {
     let wrongGuessesElement
-  
+
     beforeEach(() => {
       document.body.innerHTML = `
         <div>
@@ -85,33 +83,29 @@ describe('View', () => {
         </div>
       `
       wrongGuessesElement = document.getElementById('wrong-guesses')
-  
-      // Skapa en instans av View
-      view = new View()
     })
-  
+
     test('should display a list of wrong guesses in the DOM', () => {
       const wrongGuesses = ['x', 'y', 'z']
       view.updateraWrongGuesses(wrongGuesses)
-  
+
       expect(wrongGuessesElement.textContent).toBe('x, y, z') // Kontrollera att felaktiga gissningar visas korrekt.
     })
-  
+
     test('should display an empty string when no wrong guesses are present', () => {
       const wrongGuesses = []
       view.updateraWrongGuesses(wrongGuesses)
-  
+
       expect(wrongGuessesElement.textContent).toBe('') // Kontrollera att ingen text visas.
     })
-  
+
     test('should handle case where wrongGuessesElement is null', () => {
       document.body.innerHTML = `` // Ingen element med id "wrong-guesses".
       const wrongGuesses = ['x', 'y', 'z']
-  
+
       view.updateraWrongGuesses(wrongGuesses)
-  
+
       expect(document.getElementById('wrong-guesses')).toBeNull() // Kontrollera att inget fel kastas.
     })
   })
-  
 })
