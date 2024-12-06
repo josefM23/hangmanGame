@@ -1,3 +1,3 @@
-import './controler/index.js'
-import './model/index.js'
-import './view/index.js'
+export * from './view/index.js'
+// export * from './controler/index.js'
+export * from './model/index.js'

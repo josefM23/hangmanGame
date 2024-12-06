@@ -41,4 +41,16 @@ export class View {
       wordDisplayElement.textContent = wordDisplay
     }
   }
+
+  /**
+   * Updates the DOM to display a list of wrong guesses.
+   *
+   * @param {string[]} wrongGuesses - Array of wrong guesses.
+   */
+  updateraWrongGuesses (wrongGuesses) {
+    const wrongGuessesElement = document.getElementById('wrong-guesses')
+    if (wrongGuessesElement) {
+      wrongGuessesElement.textContent = wrongGuesses.join(', ') // Visa som lista med komma emelan.
+    }
+  }
 }
