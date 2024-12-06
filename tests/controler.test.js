@@ -79,4 +79,25 @@ describe('Controller', () => {
       expect(view.showMessage).not.toHaveBeenCalled() // Kontrollera att inget meddelande visas.
     })
   })
+
+  describe('restartGame', () => {
+    beforeEach(() => {
+      jest.spyOn(game, 'reset')
+      jest.spyOn(view, 'updateWordDisplay')
+      jest.spyOn(view, 'updateraWrongGuesses')
+      jest.spyOn(view, 'drawHangman')
+    })
+  
+    test('should reset the game with a new word and clear the view', () => {
+      const newWord = 'javascript'
+  
+      controller.restartGame(newWord)
+  
+      expect(game.reset).toHaveBeenCalledWith(newWord) // Kontrollera att spelet återställs med nytt ord.
+      expect(view.updateWordDisplay).toHaveBeenCalledWith(game.getWordDisplay()) // Kontrollera att ordet uppdateras i vyn.
+      expect(view.updateraWrongGuesses).toHaveBeenCalledWith([]) // Kontrollera att felaktiga gissningar rensas.
+      expect(view.drawHangman).toHaveBeenCalledWith(0) // Kontrollera att hängande mannen återställs.
+    })
+  })
+  
 })
