@@ -26,7 +26,7 @@ export function initializeGame (GameClass, ViewClass, ControllerClass, word = 'h
 
   // Initiera spelets tillstånd.
   view.updateWordDisplay(game.getWordDisplay())
-  view.updateraWrongGuesses([])
+  view.updateraWrongGuesses(game.wrongGuesses)
   view.drawHangman(0)
 
   return { game, view, controller } // Returnera instanser för testning...

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1733561595252" clover="3.2.0">
-  <project timestamp="1733561595252" name="All files">
+<coverage generated="1733562273072" clover="3.2.0">
+  <project timestamp="1733562273072" name="All files">
     <metrics statements="68" coveredstatements="67" conditionals="32" coveredconditionals="30" methods="21" coveredmethods="20" elements="121" coveredelements="117" complexity="0" loc="68" ncloc="68" packages="4" files="4" classes="4"/>
     <package name="src">
       <metrics statements="9" coveredstatements="8" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="index.js" path="C:\Users\rohly\Desktop\1dv609test\hangmanGame\src\index.js">
         <metrics statements="9" coveredstatements="8" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="1"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
         <line num="36" count="1" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
       </file>
