@@ -46,4 +46,49 @@ describe('Index.js', () => {
 
     expect(mockWordElement.textContent).toBe(game.getWordDisplay())
   })
+
+  test('should handle guesses and update view correctly', () => {
+    const mockWord = 'hangman'
+    const mockGuessInput = { value: 'a', trim: jest.fn().mockReturnValue('a') }
+    const mockGuessButton = { addEventListener: jest.fn() }
+    const mockWrongGuesses = ['b', 'c']
+
+    // Mock DOM
+    jest.spyOn(document, 'getElementById').mockImplementation(id => {
+      if (id === 'guess-input') return mockGuessInput
+      if (id === 'guess-button') return mockGuessButton
+      return mockWordElement
+    })
+
+    // Mock controller methods
+    const mockGame = { wrongGuesses: mockWrongGuesses }
+    const mockView = {
+      updateraWrongGuesses: jest.fn(),
+      drawHangman: jest.fn()
+    }
+    const mockController = {
+      handleGuess: jest.fn(),
+      checkGameState: jest.fn()
+    }
+
+    jest.spyOn(Game, 'mockImplementation').mockReturnValue(mockGame)
+    jest.spyOn(View, 'mockImplementation').mockReturnValue(mockView)
+    jest.spyOn(Controller, 'mockImplementation').mockReturnValue(mockController)
+
+    // Run initialization
+    initializeGame(Game, View, Controller, mockWord, wordDisplayId)
+
+    // Simulate guess button click
+    const guessEventHandler = mockGuessButton.addEventListener.mock.calls[0][1]
+    guessEventHandler() // Trigger the event
+
+    // Validate guess handling
+    expect(mockController.handleGuess).toHaveBeenCalledWith('a')
+    expect(mockController.checkGameState).toHaveBeenCalled()
+    expect(mockView.updateraWrongGuesses).toHaveBeenCalledWith(mockWrongGuesses)
+    expect(mockView.drawHangman).toHaveBeenCalledWith(mockWrongGuesses.length)
+    expect(mockGuessInput.value).toBe('')
+  })
+
+
 })
