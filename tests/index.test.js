@@ -31,5 +31,13 @@ describe('Index.js', () => {
     expect(View).toHaveBeenCalled()
     expect(Controller).toHaveBeenCalledWith(expect.any(Game), expect.any(View))
   })
+  test('should initialize the game with correct wrong guesses count', () => {
+    // Kör initializeGame med mock-klasser
+    const mockWord = 'hangman'
+    const { game, view } = initializeGame(Game, View, Controller, mockWord)
+  
+    // Kontrollera att updateraWrongGuesses anropas med en tom lista
+    expect(view.updateraWrongGuesses).toHaveBeenCalledWith(game.wrongGuesses)
+    expect(view.updateraWrongGuesses).toHaveBeenCalledTimes(1)
+  })
 })
-

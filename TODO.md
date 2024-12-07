@@ -130,7 +130,6 @@ Jag har nu någon grund struktur och vet vad osv. nu ska jag bara går till de k
 ## To-Do för Index.js. (i src mapen!)
 
 ## Implementerade metoder.
-### Metoder att implementera.(bara exempel...)
 - [ ] `document.addEventListener('DOMContentLoaded', callback)`
     - Säkerställ att allt i DOM är redo innan spelet startas
     - {Event för att starta spelet}
