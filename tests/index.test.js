@@ -40,4 +40,16 @@ describe('Index.js', () => {
     expect(view.updateraWrongGuesses).toHaveBeenCalledWith(game.wrongGuesses)
     expect(view.updateraWrongGuesses).toHaveBeenCalledTimes(1)
   })
+  test('should update DOM element with the word display', () => {
+    // Mocka ett DOM-element
+    const mockWordElement = { textContent: '' }
+    jest.spyOn(document, 'getElementById').mockReturnValue(mockWordElement)
+  
+    // Kör spelet
+    const mockWord = 'hangman'
+    const { game, view } = initializeGame(Game, View, Controller, mockWord)
+  
+    // Kontrollera att textContent uppdaterades korrekt
+    expect(mockWordElement.textContent).toBe(game.getWordDisplay())
+  })
 })

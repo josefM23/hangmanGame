@@ -17,7 +17,7 @@ import { Controller } from './js/controler/controler.js'
  * @param {Function} ViewClass - The View class or a mock for testing.
  * @param {Function} ControllerClass - The Controller class or a mock for testing.
  * @param {string} word - The word to initialize the game with.
- * @returns {Object} - The initialized game, view, and controller instances.
+ * @returns {object} - The initialized game, view, and controller instances.
  */
 export function initializeGame (GameClass, ViewClass, ControllerClass, word = 'hangman') {
   const game = new GameClass(word)
