@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.66% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/12</span>
+                <span class='fraction'>12/13</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">25% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">66.66% </span>
-                <span class="quiet">Branches</span>
+                <span class="quiet">Functions</span>
                 <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">91.66% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/12</span>
+                <span class='fraction'>12/13</span>
             </div>
         
             
@@ -105,8 +105,45 @@
 <a name='L40'></a><a href='#L40'>40</a>
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -133,8 +170,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -154,10 +190,22 @@
  * @author Josef Matyasek &lt;jm224ae@student.lnu.se&gt;
  */
 &nbsp;
-// Importera Claseer
 import { Game } from './js/model/game.js'
 import { View } from './js/view/view.js'
 import { Controller } from './js/controler/controler.js'
+&nbsp;
+/**
+ * Updates a DOM element with the word display.
+ *
+ * @param {string} elementId - The ID of the DOM element to update.
+ * @param {string} content - The content to set in the element.
+ */
+function updateWordDisplay(elementId, content) {
+  const element = document.getElementById(elementId)
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (element) {
+    element.textContent = content
+  }
+}
 &nbsp;
 /**
  * Initializes the Hangman game with dependency injection.
@@ -166,26 +214,32 @@ import { Controller } from './js/controler/controler.js'
  * @param {Function} ViewClass - The View class or a mock for testing.
  * @param {Function} ControllerClass - The Controller class or a mock for testing.
  * @param {string} word - The word to initialize the game with.
+ * @param {string} wordDisplayId - The ID of the DOM element for the word display.
  * @returns {object} - The initialized game, view, and controller instances.
  */
-export function initializeGame (GameClass, ViewClass, ControllerClass, word = <span class="branch-0 cbranch-no" title="branch not covered" >'hangman')</span> {
+export function initializeGame (
+  GameClass,
+  ViewClass,
+  ControllerClass,
+  word = <span class="branch-0 cbranch-no" title="branch not covered" >'hangman',</span>
+  wordDisplayId = <span class="branch-0 cbranch-no" title="branch not covered" >'word-display'</span>
+) {
   const game = new GameClass(word)
   const view = new ViewClass()
   const controller = new ControllerClass(game, view)
 &nbsp;
-  // Initiera spelets tillstånd.
-  const wordElement = document.getElementById('word-display')
-  if (wordElement) {
-    wordElement.textContent = game.getWordDisplay()
-  }
+  // Update the word display DOM element
+  updateWordDisplay(wordDisplayId, game.getWordDisplay())
+&nbsp;
+  // Initialize the game state
   view.updateWordDisplay(game.getWordDisplay())
   view.updateraWrongGuesses(game.wrongGuesses)
   view.drawHangman(0)
 &nbsp;
-  return { game, view, controller } // Returnera instanser för testning...
+  return { game, view, controller }
 }
 &nbsp;
-// Kör när DOMContentLoaded har laddats klart.
+// Initialize the game on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >  initializeGame(Game, View, Controller)</span>
 })
@@ -196,7 +250,7 @@ document.addEventListener('DOMContentLoaded', <span class="fstat-no" title="func
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-12-07T12:04:37.291Z
+                at 2024-12-07T12:19:05.244Z
             </div>
         <script src="../prettify.js"></script>
         <script>
