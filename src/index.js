@@ -25,6 +25,10 @@ export function initializeGame (GameClass, ViewClass, ControllerClass, word = 'h
   const controller = new ControllerClass(game, view)
 
   // Initiera spelets tillstånd.
+  const wordElement = document.getElementById('word-display')
+  if (wordElement) {
+    wordElement.textContent = game.getWordDisplay()
+  }
   view.updateWordDisplay(game.getWordDisplay())
   view.updateraWrongGuesses(game.wrongGuesses)
   view.drawHangman(0)
